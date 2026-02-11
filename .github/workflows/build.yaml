@@ -1,0 +1,26 @@
+name: C RPG Build (Windows)
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup MSYS2
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: UCRT64
+        update: true
+        install: >
+          mingw-w64-ucrt-x86_64-gcc
+
+    - name: Build
+      shell: msys2 {0}
+      run: |
+        gcc src/*.c -Iinclude -Wall -Wextra -std=c99 -o rpg_game
