@@ -39,3 +39,12 @@ ECS（Entity Component System）設計を採用し、拡張性・保守性を重
 
 ```bash
 gcc src/*.c -Iinclude -Wall -Wextra -std=c99 -o rpg_game
+
+
+## Development Note
+
+This project was developed with the assistance of AI tools (ChatGPT)
+for architectural guidance, debugging, and best practices.
+
+All integration, configuration, and final implementation were
+performed and validated by the author.
