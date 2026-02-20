@@ -39,7 +39,7 @@ ECS（Entity Component System）設計を採用し、拡張性・保守性を重
 
 ```bash
 gcc src/*.c -Iinclude -Wall -Wextra -std=c99 -o rpg_game
-
+```
 
 ## Development Note
 
