@@ -1,0 +1,39 @@
+name: Release
+
+# v0.2.0 のようなタグを push したら、Windows 版をビルドして Releases に添付する
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    runs-on: windows-latest
+    permissions:
+      contents: write   # Release の作成に必要なのはこのジョブだけ
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          install: >-
+            make
+            mingw-w64-ucrt-x86_64-gcc
+            zip
+
+      - name: Build
+        run: |
+          make WERROR=1
+          zip rpg-${GITHUB_REF_NAME}-windows.zip rpg.exe README.md LICENSE
+
+      - name: Create GitHub Release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$env:GITHUB_REF_NAME" "rpg-$env:GITHUB_REF_NAME-windows.zip" --generate-notes
