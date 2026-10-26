@@ -88,7 +88,8 @@ size_t save_serialize(const World *w, uint8_t *buf, size_t cap) {
 /* 復元した World の中身が「ありえる値」かを検証する */
 static SaveResult validate(const World *w) {
     if (w->status < 0 || w->status >= GAME_STATUS_COUNT) return SAVE_ERR_RANGE;
-    if (w->turn < 0) return SAVE_ERR_RANGE;
+    // if (w->turn < 0) return SAVE_ERR_RANGE;
+    if (w->turn < 0 || w->turn > MAX_TURNS) return SAVE_ERR_RANGE;
 
     for (int y = 0; y < MAP_HEIGHT; y++)
         for (int x = 0; x < MAP_WIDTH; x++)

@@ -17,6 +17,9 @@
 #define ENEMY_VIEW     5   /* 索敵半径（この距離以内で追跡開始） */
 #define ENEMY_LOSE     8   /* この距離を超えたら追跡をあきらめる */
 
+/* ===== ターン ===== */
+#define MAX_TURNS  999999   /* ターン数の上限（int のオーバーフロー防止） */
+
 /* ===== セーブ ===== */
 #define SAVE_FILE          "save.dat"
 #define AUTOSAVE_INTERVAL  10   /* 何ターンごとにオートセーブするか */

@@ -10,6 +10,7 @@ void system_attack(World *w, Entity attacker, Entity target) {
 
     int dmg = w->attack[attacker].atk;
     w->health[target].hp -= dmg;
+    // w->health[target].hp += dmg; // テストが正常に動作しているかの確認。わざとバグを仕込む。
     world_log(w, "%s hit %s for %d", name_of(w, attacker), name_of(w, target), dmg);
 
     if (w->health[target].hp > 0) return;

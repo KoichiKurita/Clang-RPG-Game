@@ -67,6 +67,11 @@ Command game_command_from_key(int key) {
     }
 }
 
+/* ターンを1つ進める。上限で止め、int があふれないようにする */
+static void advance_turn(World *w) {
+    if (w->turn < MAX_TURNS) w->turn++;
+}
+
 int game_step(World *w, Command cmd) {
     if (w->status != GAME_PLAYING) return 0;
 
@@ -89,12 +94,14 @@ int game_step(World *w, Command cmd) {
     const CPosition *p = &w->pos[w->player];
     if (w->map.tiles[p->y][p->x] == TILE_GOAL) {
         w->status = GAME_CLEAR;
-        w->turn++;
+        // w->turn++;
+        advance_turn(w);
         return 1;
     }
 
     system_enemy_ai(w);
-    w->turn++;
+    // w->turn++;
+    advance_turn(w);
     return 1;
 }
 
