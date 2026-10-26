@@ -1,49 +1,45 @@
-# =========================
-# Build outputs
-# =========================
+# ===== Build outputs =====
 *.exe
 *.out
 *.o
 *.obj
 *.a
 *.dll
-rpg_game
+/rpg
+/test_runner
+/fuzz_load
+/gen_seed
 
-# =========================
-# Debug / Sanitizer
-# =========================
+# ===== Debug / Sanitizer =====
 *.dSYM
 *.log
 asan_log.*
 core
 
-# =========================
-# Make
-# =========================
-Makefile~
+# ===== Make =====
 *.d
 
-# =========================
-# VSCode
-# =========================
+# ===== VSCode =====
 .vscode/*
 !.vscode/tasks.json
 !.vscode/launch.json
 
-# =========================
-# OS files
-# =========================
+# ===== OS files =====
 Thumbs.db
 Desktop.ini
 
-# =========================
-# Autosave / Runtime files
-# =========================
-autosave.dat
+# ===== Save files =====
+save.dat
+save.dat.tmp
+test_save.dat*
 
-# =========================
-# Temporary files
-# =========================
+# ===== Fuzzing =====
+fuzz_corpus/
+crash-*
+leak-*
+timeout-*
+
+# ===== Temporary files =====
 *~
 *.swp
 *.tmp
