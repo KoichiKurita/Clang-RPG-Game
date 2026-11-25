@@ -1,7 +1,8 @@
-# GitHub Actions のバージョンを毎週チェックし、更新があれば PR を作る
+# GitHub Actions のバージョンを毎週チェックし、更新があれば develop 向けに PR を作る
 version: 2
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
+    target-branch: "develop"
     schedule:
       interval: "weekly"
